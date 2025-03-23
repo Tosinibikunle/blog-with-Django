@@ -1,1 +1,1 @@
-# Blog-app
+# Inventory-Management-System
