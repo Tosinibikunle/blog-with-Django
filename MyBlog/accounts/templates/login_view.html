@@ -1,0 +1,26 @@
+<!-- templates/account/login_view.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+        <title>Login</title>
+        </head>
+        <body>
+            <h2>Login</h2>
+                <form method="post">
+                        {% csrf_token %}
+                                {{ form.non_field_errors }}
+                                        {% for field in form %}
+                                                    <div>
+                                                                    <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                                                                                    {{ field }}
+                                                                                                    {% if field.errors %}
+                                                                                                                        <div>{{ field.errors }}</div>
+                                                                                                                                        {% endif %}
+                                                                                                                                                    </div>
+                                                                                                                                                            {% endfor %}
+                                                                                                                                                                    <button type="submit">Login</button>
+                                                                                                                                                                        </form>
+                                                                                                                                                                            <p>Don't have an account? <a href="{% url 'account:signup' %}">Sign up here</a></p>
+                                                                                                                                                                            </body>
+                                                                                                                                                                            </html>-->
