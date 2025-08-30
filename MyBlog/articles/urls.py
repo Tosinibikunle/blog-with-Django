@@ -5,7 +5,6 @@ urlpatterns = [
     # Existing routes
     path("", views.article_list, name="list"),
     path("<slug:slug>", views.article_detail, name="detail"),
-
     # Placeholder routes
     path("create/", views.article_create, name="create"),
     path("<slug:slug>/edit/", views.article_edit, name="edit"),
