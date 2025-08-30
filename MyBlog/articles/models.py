@@ -17,6 +17,11 @@ class Article(models.Model):
     thumb = models.ImageField(default='default.png', blank=True)
     category = models.CharField(max_length=50, choices=CATEGORY_CHOICES, blank=True)
     is_published = models.BooleanField(default=True)  # For filtering in search/archive
+    views = models.PositiveIntegerField(default=0)  # Track number of views
+    likes = models.PositiveIntegerField(default=0)  # Track number of likes
+
+    class Meta:
+        ordering = ['-date']
 
     def __str__(self):
         return self.title
