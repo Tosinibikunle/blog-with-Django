@@ -2,13 +2,10 @@ from django.test import TestCase
 from .models import Article
 
 
-# Create your tests here.
 class ArticleModelTest(TestCase):
     def setUp(self):
         self.article = Article.objects.create(
-            title="Test Article",
-            body="This is a test article body.",
-            category="tech"
+            title="Test Article", body="This is a test article body.", category="tech"
         )
 
     def test_article_creation(self):
