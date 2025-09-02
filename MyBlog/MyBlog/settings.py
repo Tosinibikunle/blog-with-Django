@@ -23,12 +23,12 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "accounts",
-    "analytics",
-    "categories",
-    "posts",
-    "comments",
-    "likes",
+    "apps.accounts",
+    "apps.analytics",
+    "apps.categories",
+    "apps.posts",
+    "apps.comments",
+    "apps.likes",
 
 ]
 
