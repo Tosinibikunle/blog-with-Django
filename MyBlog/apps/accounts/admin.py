@@ -1,7 +1,7 @@
 from django.contrib import admin
 from .models import CustomBlogger, customReader
 
-# Register your models here.
+
 
 @admin.register(CustomBlogger)
 class CustomBloggerAdmin(admin.ModelAdmin):
