@@ -6,7 +6,7 @@ from .serializers import CustomBloggerSerializer, CustomBloggerCreateSerializer,
 from rest_framework.response import Response
 from rest_framework import status
 
-# Create your views here.
+
 User = get_user_model()
 
 class CustomBloggerViewSet(viewsets.ModelViewSet):
@@ -48,4 +48,4 @@ class CustomReaderViewSet(viewsets.ModelViewSet):
 class CustomBloggerDetailViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = CustomBlogger.objects.all()
     serializer_class = CustomBloggerSerializer
-    permission_classes = [permissions.IsAuthenticated]
+    permission_classes = [permissions.IsAuthenticated]    
