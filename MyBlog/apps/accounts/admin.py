@@ -5,9 +5,9 @@ from .models import CustomBlogger, customReader
 
 @admin.register(CustomBlogger)
 class CustomBloggerAdmin(admin.ModelAdmin):
-    list_display = ('email', 'username', 'is_verified', 'is_staff', 'created_at')
+    list_display = ('email', 'username', 'is_verified', 'created_at')
     search_fields = ('email', 'username', 'first_name', 'last_name')
-    list_filter = ('is_verified', 'is_staff', 'is_superuser', 'created_at')
+    list_filter = ('is_verified',  'created_at')
     ordering = ('-created_at',)
     fieldsets = (
         (None, {'fields': ('email', 'username', 'password')}),
