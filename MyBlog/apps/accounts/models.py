@@ -7,7 +7,11 @@ from django.utils import timezone
 
 # Create your models here.
 
-class CustomBlogger(AbstractUser):
+class CustomBlogger(models.Model):
+    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='blogger_profile')
+    first_name = models.CharField(max_length=30, null=True, blank=True, verbose_name=lazy("first name"))
+    last_name = models.CharField(max_length=30, null=True, blank=True, verbose_name=lazy("last name"))
+    username = models.CharField(max_length=30, unique=True, verbose_name=lazy("username"))
     email = models.EmailField(lazy("email address"), unique=True)
     phone_number = models.CharField(
         max_length=15,
