@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from.models import Category, Tag
-# Create your views here.
+
 
 class CategoryViewset():
     def list(self, request):
