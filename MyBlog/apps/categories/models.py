@@ -30,3 +30,10 @@ class Tag(models.Model):
         ordering = ['name']
         verbose_name = "Tag"
         verbose_name_plural = "Tags"
+
+    def get_absolute_url(self):
+        from django.urls import reverse
+        return reverse('tag_detail', args=[self.slug])
+
+    def get_posts(self):
+        return self.post_set.all()        
