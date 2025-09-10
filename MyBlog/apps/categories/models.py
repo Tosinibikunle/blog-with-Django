@@ -3,6 +3,7 @@ from django.db import models
 
 # Create your models here.
 
+
 class Category(models.Model):
     name = models.CharField(max_length=100)
     slug = models.SlugField(max_length=100, unique=True)
@@ -13,9 +14,10 @@ class Category(models.Model):
         return self.name
 
     class Meta:
-        ordering = ['name']
+        ordering = ["name"]
         verbose_name = "Category"
         verbose_name_plural = "Categories"
+
 
 class Tag(models.Model):
     name = models.CharField(max_length=100)
@@ -27,13 +29,14 @@ class Tag(models.Model):
         return self.name
 
     class Meta:
-        ordering = ['name']
+        ordering = ["name"]
         verbose_name = "Tag"
         verbose_name_plural = "Tags"
 
     def get_absolute_url(self):
         from django.urls import reverse
-        return reverse('tag_detail', args=[self.slug])
+
+        return reverse("tag_detail", args=[self.slug])
 
     def get_posts(self):
-        return self.post_set.all()        
+        return self.post_set.all()
