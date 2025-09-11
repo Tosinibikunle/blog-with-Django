@@ -1,9 +1,6 @@
 from django.db import models
 
 
-# Create your models here.
-
-
 class Category(models.Model):
     name = models.CharField(max_length=100)
     slug = models.SlugField(max_length=100, unique=True)
@@ -40,3 +37,6 @@ class Tag(models.Model):
 
     def get_posts(self):
         return self.post_set.all()
+    
+    def get_post_count(self):
+        return self.post_set.count()
