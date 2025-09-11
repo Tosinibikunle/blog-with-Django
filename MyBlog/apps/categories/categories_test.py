@@ -2,9 +2,6 @@ from django.test import TestCase
 from .models import Category
 
 
-
-
-
 class CategoryModelTest(TestCase):
     def setup(self):
         self.category = Category.objects.create(name="Django", slug="django")
