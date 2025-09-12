@@ -15,6 +15,17 @@ class Category(models.Model):
         verbose_name = "Category"
         verbose_name_plural = "Categories"
 
+    def get_absolute_url(self):
+        from django.urls import reverse
+
+        return reverse("category_detail", args=[self.slug])
+    
+    def get_posts(self):
+        return self.post_set.all()
+    
+    def get_post_count(self):
+        return self.post_set.count()
+
 
 class Tag(models.Model):
     name = models.CharField(max_length=100)
