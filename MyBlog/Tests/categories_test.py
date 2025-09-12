@@ -24,6 +24,7 @@ class CategoryModelTest(TestCase):
         count = self.category.get_post_count()
         assert count == 0
 
+
 class TagModelTest(TestCase):
     def setup(self):
         self.tag = Tag.objects.create(name="Python", slug="python")
@@ -45,4 +46,6 @@ class TagModelTest(TestCase):
     def test_get_post_count(self):
         count = self.tag.get_post_count()
         assert count == 0
+
+
 # Note: The actual URL patterns (like "/categories/<slug>/") should match your project's URL configuration.

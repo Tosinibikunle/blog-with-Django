@@ -19,10 +19,10 @@ class Category(models.Model):
         from django.urls import reverse
 
         return reverse("category_detail", args=[self.slug])
-    
+
     def get_posts(self):
         return self.post_set.all()
-    
+
     def get_post_count(self):
         return self.post_set.count()
 
@@ -48,6 +48,6 @@ class Tag(models.Model):
 
     def get_posts(self):
         return self.post_set.all()
-    
+
     def get_post_count(self):
         return self.post_set.count()
