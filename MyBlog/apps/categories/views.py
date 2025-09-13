@@ -1,16 +1,12 @@
-from django.shortcuts import render
+from rest_framework import viewsets
 from .models import Category, Tag
+from .serializers import CategorySerializer, TagSerializer
 
+class CategoryViewset(viewsets.ModelViewSet):
+    queryset = Category.objects.all()
+    serializer_class = CategorySerializer
 
-class CategoryViewset:
-    def list(self, request):
-        categories = Category.objects.all()
-        return render(
-            request, "categories/category_list.html", {"categories": categories}
-        )
+class TagViewset(viewsets.ModelViewSet):
+    queryset = Tag.objects.all()
+    serializer_class = TagSerializer
 
-
-class TagViewset:
-    def list(self, request):
-        tags = Tag.objects.all()
-        return render(request, "categories/tag_list.html", {"tags": tags})
