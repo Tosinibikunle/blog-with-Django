@@ -3,7 +3,7 @@ from rest_framework import serializers
 from django.contrib.auth import get_user_model
 from django.utils.translation import gettext_lazy as lazy
 from django.contrib.auth.password_validation import validate_password
-# from django.core.validators import RegexValidator
+
 
 
 User = get_user_model()
