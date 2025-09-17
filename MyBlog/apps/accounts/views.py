@@ -49,3 +49,8 @@ class CustomBloggerDetailViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = CustomBlogger.objects.all()
     serializer_class = CustomBloggerSerializer
     permission_classes = [permissions.IsAuthenticated]    
+
+class likesViewSet(viewsets.ModelViewSet):
+    queryset = CustomBlogger.objects.all()
+    serializer_class = CustomBloggerSerializer
+    permission_classes = [permissions.IsAuthenticated]
