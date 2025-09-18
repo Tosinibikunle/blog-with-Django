@@ -16,4 +16,20 @@ class LikeViewSet(viewsets.ModelViewSet):
 class LikeCreateViewSet(viewsets.ModelViewSet):
     queryset = Like.objects.all()
     serializer_class = LikeCreateSerializer
-        
+
+    def perform_create(self, serializer):
+        serializer.save()
+
+class LikeDeleteView(viewsets.ModelViewSet):
+    queryset = Like.objects.all()
+    serializer_class = LikeSerializer
+
+    def perform_destroy(self, instance):
+        instance.delete()
+
+class LikeListViewSet(viewsets.ModelViewSet):
+    serializer_class = LikeSerializer
+
+    def get_queryset(self):
+        post_id = self.kwargs['post_id']
+        return Like.objects.filter(post_id=post_id)        
