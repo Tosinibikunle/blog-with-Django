@@ -12,3 +12,8 @@ class LikeViewSet(viewsets.ModelViewSet):
         if self.action == 'create':
             return LikeCreateSerializer
         return super().get_serializer_class()
+    
+class LikeCreateViewSet(viewsets.ModelViewSet):
+    queryset = Like.objects.all()
+    serializer_class = LikeCreateSerializer
+        
