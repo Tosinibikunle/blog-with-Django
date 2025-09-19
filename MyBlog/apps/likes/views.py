@@ -5,7 +5,6 @@ from .serializers import LikeSerializer, LikeCreateSerializer
 from rest_framework.generics import DestroyAPIView, ListAPIView
 from rest_framework.response import Response
 
-# Create your views here.
 class LikeViewSet(viewsets.ModelViewSet):
     queryset = Like.objects.all()
     serializer_class = LikeSerializer
