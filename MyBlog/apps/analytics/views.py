@@ -11,3 +11,11 @@ class PageViewList(generics.ListCreateAPIView):
 class ClickEventList(generics.ListCreateAPIView):
     queryset = ClickEvent.objects.all()
     serializer_class = ClickEventSerializer
+
+class PageViewDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = PageView.objects.all()
+    serializer_class = PageViewSerializer
+
+class ClickEventDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = ClickEvent.objects.all()
+    serializer_class = ClickEventSerializer
