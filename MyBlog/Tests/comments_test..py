@@ -1,5 +1,5 @@
 from django.test import TestCase
-from .models import Comment
+from  apps.comments.models import Comment
 from django.contrib.auth import get_user_model
 from apps.posts.models import Post
 
