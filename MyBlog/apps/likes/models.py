@@ -18,4 +18,12 @@ class Like(models.Model):
     def __str__(self):
         return f"{self.user.email} liked post {self.post.id}"
     
+    class User(models.Model):
+        email = models.EmailField(unique=True)
+        name = models.CharField(max_length=100)
+
+        def __str__(self):
+            return self.email
+        def get_full_name(self):
+            return self.name
 
