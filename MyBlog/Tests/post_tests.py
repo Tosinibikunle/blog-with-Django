@@ -1,6 +1,5 @@
 from django.test import TestCase
 from apps.posts.models import Post
-# from apps.users.models import User
 from apps.accounts.models import CustomBlogger, customReader
 from django.contrib.auth import get_user_model
 
