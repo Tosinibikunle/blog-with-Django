@@ -29,6 +29,7 @@ INSTALLED_APPS = [
     "apps.posts",
     "apps.comments",
     "apps.likes",
+    "django_extensions",
 
 ]
 
