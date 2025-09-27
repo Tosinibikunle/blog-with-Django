@@ -1,41 +1,62 @@
 from django.shortcuts import render, get_object_or_404
-from django.views import View
+# from django.views import View
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from .serializers import PostSerializer
 from .models import Post
 
-
-
-
-class PostListView(View):
+class PostListAPIView(APIView):
     def get(self, request):
         posts = Post.objects.all()
-        return render(request, 'posts/post_list.html', {'posts': posts})
+        # Serialize the posts using a serializer
+        serializer = PostSerializer(posts, many=True)
+        return Response(serializer.data)
 
-class PostDetailView(View):
+class PostDetailAPIView(APIView):
     def get(self, request, post_id):
         post = get_object_or_404(Post, id=post_id)
-        return render(request, 'posts/post_detail.html', {'post': post})
+        # Serialize the post using a serializer
+        serializer = PostSerializer(post)
+        return Response(serializer.data)
+
+class PostListView(APIView):
+    def get(self, request):
+        posts = Post.objects.all()
+        serializer = PostSerializer(posts, many=True)
+        return render(request, 'posts/post_list.html', {'posts': serializer.data})
+
+class PostDetailView(APIView):
+    def get(self, request, post_id):
+        post = get_object_or_404(Post, id=post_id)
+        serializer = PostSerializer(post)
+        return render(request, 'posts/post_detail.html', {'post': serializer.data})
     
     def get_author_posts(self, request, author_id):
         posts = Post.objects.filter(author_id=author_id)
-        return render(request, 'posts/author_posts.html', {'posts': posts})
-    
+        serializer = PostSerializer(posts, many=True)
+        return render(request, 'posts/author_posts.html', {'posts': serializer.data})
+
     def get_author_name_posts(self, request, author_name):
         posts = Post.objects.filter(author__name=author_name)
-        return render(request, 'posts/author_posts.html', {'posts': posts})  
-    
-      
-class PostAuthorView(View):
+        serializer = PostSerializer(posts, many=True)
+        return render(request, 'posts/author_posts.html', {'posts': serializer.data})
+
+class PostAuthorView(APIView):
     def get(self, request, author_id=None, author_name=None):
         if author_id:
             posts = Post.objects.filter(author_id=author_id)
+            serializer = PostSerializer(posts, many=True)
         elif author_name:
             posts = Post.objects.filter(author__name=author_name)
+            serializer = PostSerializer(posts, many=True)
         else:
             posts = Post.objects.none()
-        return render(request, 'posts/author_posts.html', {'posts': posts})
+        return render(request, 'posts/author_posts.html', {'posts': serializer.data})
     def get_posts_by_author_name(self, request, author_name):
         posts = Post.objects.filter(author__name=author_name)
-        return render(request, 'posts/author_posts.html', {'posts': posts})
+        serializer = PostSerializer(posts, many=True)
+        return render(request, 'posts/author_posts.html', {'posts': serializer.data})
     def get_posts_by_author_email(self, request, author_email):
         posts = Post.objects.filter(author__email=author_email)
-        return render(request, 'posts/author_posts.html', {'posts': posts})
+        serializer = PostSerializer(posts, many=True)
+        return render(request, 'posts/author_posts.html', {'posts': serializer.data})
