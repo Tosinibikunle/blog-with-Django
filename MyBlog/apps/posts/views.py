@@ -27,23 +27,26 @@ class PostListView(APIView):
     def get(self, request):
         posts = Post.objects.all()
         serializer = PostSerializer(posts, many=True)
-        return render(request, 'posts/post_list.html', {'posts': serializer.data})
+        return Response(serializer.data)
 
 class PostDetailView(APIView):
     def get(self, request, post_id):
         post = get_object_or_404(Post, id=post_id)
         serializer = PostSerializer(post)
-        return render(request, 'posts/post_detail.html', {'post': serializer.data})
+        # return render(request, 'posts/post_detail.html', {'post': serializer.data})
+        return Response(serializer.data)
     
     def get_author_posts(self, request, author_id):
         posts = Post.objects.filter(author_id=author_id)
         serializer = PostSerializer(posts, many=True)
-        return render(request, 'posts/author_posts.html', {'posts': serializer.data})
+        # return render(request, 'posts/author_posts.html', {'posts': serializer.data})
+        return Response(serializer.data)
 
     def get_author_name_posts(self, request, author_name):
         posts = Post.objects.filter(author__name=author_name)
         serializer = PostSerializer(posts, many=True)
-        return render(request, 'posts/author_posts.html', {'posts': serializer.data})
+        # return render(request, 'posts/author_posts.html', {'posts': serializer.data})
+        return Response(serializer.data)
 
 class PostAuthorView(APIView):
     def get(self, request, author_id=None, author_name=None):
@@ -55,7 +58,7 @@ class PostAuthorView(APIView):
             serializer = PostSerializer(posts, many=True)
         else:
             posts = Post.objects.none()
-        return render(request, 'posts/author_posts.html', {'posts': serializer.data})
+        return Response(serializer.data)
     def get_posts_by_author_name(self, request, author_name):
         posts = Post.objects.filter(author__name=author_name)
         serializer = PostSerializer(posts, many=True)
