@@ -8,6 +8,10 @@ from .models import Post
 class PostListAPIView(APIView):
     def get(self, request):
         posts = Post.objects.all()
+        if not posts:
+            return Response({"detail": "No posts found."}, status=404)
+        else:
+            pass
         # Serialize the posts using a serializer
         serializer = PostSerializer(posts, many=True)
         return Response(serializer.data)
