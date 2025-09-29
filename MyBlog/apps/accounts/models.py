@@ -4,31 +4,55 @@ from django.core.validators import RegexValidator
 from django.conf import settings
 
 
-
 class CustomBlogger(models.Model):
-    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='blogger_profile')
-    first_name = models.CharField(max_length=30, null=True, blank=True, verbose_name=lazy("first name"))
-    last_name = models.CharField(max_length=30, null=True, blank=True, verbose_name=lazy("last name"))
-    username = models.CharField(max_length=30, unique=True, verbose_name=lazy("username"))
+    user = models.OneToOneField(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        related_name="blogger_profile",
+    )
+    first_name = models.CharField(
+        max_length=30, null=True, blank=True, verbose_name=lazy("first name")
+    )
+    last_name = models.CharField(
+        max_length=30, null=True, blank=True, verbose_name=lazy("last name")
+    )
+    username = models.CharField(
+        max_length=30, unique=True, verbose_name=lazy("username")
+    )
     email = models.EmailField(lazy("email address"), unique=True)
     phone_number = models.CharField(
         max_length=15,
         unique=True,
         null=True,
         blank=True,
-        validators=[RegexValidator(r'^\+?1?\d{9,15}$', lazy("Enter a valid phone number."))],
-        verbose_name=lazy("phone number")
+        validators=[
+            RegexValidator(r"^\+?1?\d{9,15}$", lazy("Enter a valid phone number."))
+        ],
+        verbose_name=lazy("phone number"),
     )
-    date_of_birth = models.DateField(null=True, blank=True, verbose_name=lazy("date of birth"))
+    date_of_birth = models.DateField(
+        null=True, blank=True, verbose_name=lazy("date of birth")
+    )
     bio = models.TextField(null=True, blank=True, verbose_name=lazy("biography"))
-    profile_picture = models.ImageField(upload_to='profile_pics/', null=True, blank=True, verbose_name=lazy("profile picture"))
+    profile_picture = models.ImageField(
+        upload_to="profile_pics/",
+        null=True,
+        blank=True,
+        verbose_name=lazy("profile picture"),
+    )
     is_verified = models.BooleanField(default=False, verbose_name=lazy("is verified"))
-    last_login_ip = models.GenericIPAddressField(null=True, blank=True, verbose_name=lazy("last login IP address"))
-    created_at = models.DateTimeField(auto_now_add=True, verbose_name=lazy("account created at"))
-    updated_at = models.DateTimeField(auto_now=True, verbose_name=lazy("account updated at"))
+    last_login_ip = models.GenericIPAddressField(
+        null=True, blank=True, verbose_name=lazy("last login IP address")
+    )
+    created_at = models.DateTimeField(
+        auto_now_add=True, verbose_name=lazy("account created at")
+    )
+    updated_at = models.DateTimeField(
+        auto_now=True, verbose_name=lazy("account updated at")
+    )
 
-    USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['username']
+    USERNAME_FIELD = "email"
+    REQUIRED_FIELDS = ["username"]
 
     class Meta:
         verbose_name = lazy("user")
@@ -46,18 +70,31 @@ class CustomBlogger(models.Model):
 
     def verify_account(self):
         self.is_verified = True
-        self.save(update_fields=['is_verified'])
+        self.save(update_fields=["is_verified"])
 
     def update_last_login_ip(self, ip_address):
         self.last_login_ip = ip_address
-        self.save(update_fields=['last_login_ip'])
+        self.save(update_fields=["last_login_ip"])
+
 
 class customReader(models.Model):
-    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='reader_profile')
-    favorite_genres = models.CharField(max_length=255, null=True, blank=True, verbose_name=lazy("favorite genres"))
-    subscribed_newsletter = models.BooleanField(default=False, verbose_name=lazy("subscribed to newsletter"))
-    created_at = models.DateTimeField(auto_now_add=True, verbose_name=lazy("profile created at"))
-    updated_at = models.DateTimeField(auto_now=True, verbose_name=lazy("profile updated at"))
+    user = models.OneToOneField(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        related_name="reader_profile",
+    )
+    favorite_genres = models.CharField(
+        max_length=255, null=True, blank=True, verbose_name=lazy("favorite genres")
+    )
+    subscribed_newsletter = models.BooleanField(
+        default=False, verbose_name=lazy("subscribed to newsletter")
+    )
+    created_at = models.DateTimeField(
+        auto_now_add=True, verbose_name=lazy("profile created at")
+    )
+    updated_at = models.DateTimeField(
+        auto_now=True, verbose_name=lazy("profile updated at")
+    )
 
     class Meta:
         verbose_name = lazy("reader profile")
@@ -68,8 +105,8 @@ class customReader(models.Model):
 
     def subscribe_newsletter(self):
         self.subscribed_newsletter = True
-        self.save(update_fields=['subscribed_newsletter'])
+        self.save(update_fields=["subscribed_newsletter"])
 
     def unsubscribe_newsletter(self):
         self.subscribed_newsletter = False
-        self.save(update_fields=['subscribed_newsletter'])
+        self.save(update_fields=["subscribed_newsletter"])
