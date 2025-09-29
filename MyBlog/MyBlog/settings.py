@@ -1,7 +1,6 @@
 import os
 
 
-
 from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -44,6 +43,14 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = "MyBlog.urls"
+
+
+REST_FRAMEWORK = {
+    "DEFAULT_RENDERER_CLASSES": [
+        "rest_framework.renderers.JSONRenderer",  
+    ]
+}
+
 
 TEMPLATES = [
     {
