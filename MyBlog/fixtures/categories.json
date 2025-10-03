@@ -1,0 +1,34 @@
+[
+    {
+        "model": "blog.category",
+        "pk": 1,
+        "fields": {
+            "name": "Technology",
+            "description": "Posts related to technology and gadgets."
+        }
+    },
+    {
+        "model": "blog.category",
+        "pk": 2,
+        "fields": {
+            "name": "Lifestyle",
+            "description": "Posts about lifestyle, health, and wellness."
+        }
+    },
+    {
+        "model": "blog.category",
+        "pk": 3,
+        "fields": {
+            "name": "Travel",
+            "description": "Travel experiences and tips."
+        }
+    },
+    {
+        "model": "blog.category",
+        "pk": 4,
+        "fields": {
+            "name": "Food",
+            "description": "Delicious recipes and food reviews."
+        }
+    }
+]
