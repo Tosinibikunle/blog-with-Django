@@ -24,5 +24,6 @@ class Post(models.Model):
 
     def author_id(self):
         return self.author.id
+
     def posts(self):
         return Post.objects.filter(author=self.author)
