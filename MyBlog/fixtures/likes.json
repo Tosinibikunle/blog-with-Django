@@ -1,0 +1,29 @@
+[
+    {
+        "model" : "blog.like",
+        "pk" : 1,
+        "fields" : {
+            "post" : 1,
+            "user" : "Alice",
+            "created_at" : "2024-06-01T10:05:00Z"
+        }
+    },
+    {
+        "model" : "blog.like",
+        "pk" : 2,
+        "fields" : {
+            "post" : 1,
+            "user" : "Bob",
+            "created_at" : "2024-06-01T11:15:00Z"
+        }
+    },
+    {
+        "model" : "blog.like",
+        "pk" : 3,
+        "fields" : {
+            "post" : 2,
+            "user" : "Charlie",
+            "created_at" : "2024-06-02T09:45:00Z"
+        }
+    }
+]
