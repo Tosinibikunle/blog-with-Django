@@ -1,0 +1,62 @@
+[
+  {
+    "model": "accounts.customblogger",
+    "pk": 1,
+    "fields": {
+      "user": 1,
+      "first_name": "John",
+      "last_name": "Doe",
+      "username": "john_doe",
+      "email": "john@example.com",
+      "phone_number": "+2348012345678",
+      "date_of_birth": "1995-05-14",
+      "bio": "Passionate about technology and content creation.",
+      "profile_picture": "",
+      "is_verified": true,
+      "last_login_ip": "192.168.1.10",
+      "created_at": "2024-01-01T12:00:00Z",
+      "updated_at": "2024-01-01T12:00:00Z"
+    }
+  },
+  {
+    "model": "accounts.customblogger",
+    "pk": 2,
+    "fields": {
+      "user": 2,
+      "first_name": "Jane",
+      "last_name": "Smith",
+      "username": "jane_writer",
+      "email": "jane@example.com",
+      "phone_number": "+2348098765432",
+      "date_of_birth": "1993-09-21",
+      "bio": "Lifestyle blogger and food enthusiast.",
+      "profile_picture": "",
+      "is_verified": false,
+      "last_login_ip": "192.168.1.11",
+      "created_at": "2024-01-02T12:00:00Z",
+      "updated_at": "2024-01-02T12:00:00Z"
+    }
+  },
+  {
+    "model": "accounts.customreader",
+    "pk": 1,
+    "fields": {
+      "user": 3,
+      "favorite_genres": "Technology, Travel, Science Fiction",
+      "subscribed_newsletter": true,
+      "created_at": "2024-01-03T12:00:00Z",
+      "updated_at": "2024-01-03T12:00:00Z"
+    }
+  },
+  {
+    "model": "accounts.customreader",
+    "pk": 2,
+    "fields": {
+      "user": 4,
+      "favorite_genres": "Health, Lifestyle, Education",
+      "subscribed_newsletter": false,
+      "created_at": "2024-01-04T12:00:00Z",
+      "updated_at": "2024-01-04T12:00:00Z"
+    }
+  }
+]
