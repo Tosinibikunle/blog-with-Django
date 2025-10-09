@@ -25,3 +25,5 @@ class LikeCreateSerializer(serializers.ModelSerializer):
         if Like.objects.filter(user=user, post=post).exists():
             raise serializers.ValidationError("You have already liked this post.")
         return data
+
+    # python manage.py loaddata fixtures/accounts.json
