@@ -27,3 +27,6 @@ class Post(models.Model):
 
     def posts(self):
         return Post.objects.filter(author=self.author)
+
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True) 
