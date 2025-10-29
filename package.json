@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "@sentry/react": "^10.22.0",
+    "logrocket": "^10.1.0"
+  }
+}
